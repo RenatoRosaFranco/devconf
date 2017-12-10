@@ -107,8 +107,18 @@
             <li><hr></li>
           </ul>
 
-        <div class='row'>
+        <div class="col-md-12" style="padding: 15px;">
+          <%= form_for(:schedule) do |f| %>
+            <ul class='list-inline text-center'>
+                <li><%= f.check_box :all %> Mostrar todos </li>
+                <li><%= f.check_box :programacao %> Programação </li>
+                <li><%= f.check_box :design %> Design </li>
+                <li><%= f.check_box :design %> Empreendedorismo </li>
+            </ul>
+          <% end %>
+        </div>
 
+        <div class='row'>
           <div class='col-md-4'>
            <div class='col-md-12'>
              <div class='panel panel-default padding'>

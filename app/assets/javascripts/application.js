@@ -19,3 +19,8 @@
 //= require angular-animate
 //= require angular-resource
 //= require_tree .
+
+var app = angular.module('app', []);
+app.controller('ApplicationController', function(){
+
+});

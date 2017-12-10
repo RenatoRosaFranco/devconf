@@ -11,7 +11,8 @@
     <script><%= yield :js %></script>
   </head>
 
-  <body class="<%= controller.controller_name %>" data-spy="scroll">
+  <body ng-controller="ApplicationController"
+    class="<%= controller.controller_name %>" data-spy="scroll">
     <%= yield %>
   </body>
 </html>
