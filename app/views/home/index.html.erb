@@ -1,0 +1,261 @@
+<% provide :title, "Home" %>
+
+<%= render partial: 'layouts/header' %>
+
+<div class="jumbotron" id='home'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class='list-unstyled text-center'>
+          <li><h1>DEVCONF-HUB </code> </h1></li>
+          <li><h2>A programação ao alcançe de todos.</h2></li>
+          <ul class='list-unstyled list-inline'><br>
+              <li><%= link_to 'INSCREVA-SE', '', class: 'btn btn-primary btn-lg' %></li>
+              <li><%= link_to 'PALESTRAS', '', class: 'btn btn-primary btn-lg' %></li>
+          </ul>
+        </ul>
+
+        <ul class='breadcrumb'>
+           <li><i class='glyphicon glyphicon-search'></i>
+             <%= link_to 'Home', root_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id='about'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> SOBRE O EVENTO</h2></li>
+            <li><p>Conheça um pouco sobre nosso evento.</p></li>
+            <li><hr></li>
+
+            <p>É com muito orgulho que chegamos à 11ª edição da RubyConf Brasil!
+
+               <br><br>
+               Este ano, o evento terá uma programação cheia de novidades e com palestrantes
+               de peso no mercado de TI que trarão conteúdos para desenvolvedores que querem
+               ampliar seus conhecimentos sobre Ruby, Ruby on Rails, Técnicas Ágeis, Devops e
+               outras tecnologias como Elixir, Clojure, Go, Rust e Crystal.
+
+               <br><br>
+               Desde a sua estreia, como Rails Summit, a RubyConf Brasil ganhou novos
+               formatos e já é uma das principais referências na área de tecnologia no Brasil.
+            </p>
+
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='speakers'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> PALESTRANTES</h2></li>
+            <li><p>Conheça nossos palestrantes.</p></li>
+            <li><hr></li>
+
+            <div class="col-md-offset-4 col-md-4">
+               <%= form_for(:speaker) do |f| %>
+                   <div class="field">
+                     <div class='input-group'>
+                     <div class='input-group-addon'><i class='glyphicon glyphicon-search'></i></div>
+                     <%= f.text_field :name, class: 'form-control', required: 'required',
+                     placeholder: 'Pesquisar palestrantes', autocomplete: 'off', 'ng-model': 'name' %>
+                     </div>
+                   </div>
+               <% end %>
+            </div>
+
+            <div class='col-md-12' style="margin-top: 40px;">
+            <% (1..8).each do %>
+            <% Speaker.all.each do |speaker| %>
+              <div class="col-md-3">
+               <div class='panel pane-default padding'>
+                 <ul class='list-unstyled text-center'>
+                  <li><%= image_tag(speaker.avatar, class: 'avatar') %></li>
+                  <li><h4 style='text-transform: uppercase;'><%= link_to speaker.name, '' %></h5></li>
+                  <li><h5><strong><%= speaker.enterprise %></strong></h5></li>
+                  <li><%= truncate(speaker.description, length: 50) %></li>
+                 </ul>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+
+            </div>
+
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='schedules'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> PROGRAMAÇÃO</h2></li>
+            <li><p>Acompanhe nossa programação.</p></li>
+            <li><hr></li>
+          </ul>
+
+        <div class='row'>
+
+          <div class='col-md-4'>
+           <div class='col-md-12'>
+             <div class='panel panel-default padding'>
+                <ul class='list-unstyled'>
+                   <li><h4>FILTRAR POR</h4></li>
+                   <li><hr></li>
+                   <%= form_for(:schedule)  do |f| %>
+                     <li><%= f.check_box :all %> Mostrar todos </li>
+                     <li><%= f.check_box :programacao %> Programação </li>
+                     <li><%= f.check_box :design %> Design </li>
+                     <li><%= f.check_box :empreendedorismo %> Empreendedorismo </li>
+                   <% end %>
+                </ul>
+             </div>
+           </div>
+          </div>
+
+          <div class='col-md-8'>
+          <table class='table'>
+               <tbody>
+              <% (1..8).each do %>
+                <% Schedule.all.each do |schedule| %>
+                 <tr>
+                   <td><h4><%= schedule.hour %></h4></td>
+                   <td>
+                       <h4 style='text-transform: uppercase;'><%= schedule.title %></h4>
+                       <p><%= schedule.description %></p>
+                       <strong> <i class='glyphicon glyphicon-search'></i>
+                       <%= schedule.user.name %></strong> / CODE7EVEN
+                       <ul class='list-inline list-unstyled'><br>
+                          <li><a href=''><i class='glyphicon glyphicon-search'></i></a></li>
+                          <li><a href=''><i class='glyphicon glyphicon-search'></i></a></li>
+                          <li><a href=''><i class='glyphicon glyphicon-search'></i></a></li>
+                       </ul>
+                   </td>
+                 </tr>
+                <% end %>
+                <% end %>
+               </tbody>
+          </table>
+         </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='localization'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> LOCAL</h2></li>
+            <li>Conheça o local do evento com antecedencia.</li>
+            <li><hr></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='terms'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> CÓDIGO DE CONDUTA</h2></li>
+            <li><p>Conheça o código de conduta do evento.</p></li>
+            <li><hr></li>
+          </ul>
+
+          <p>
+            Estamos comprometidos em ter  um evento livre de discriminação para todos,
+            independentemente de gênero, identidade e expressão de gênero, orientação sexual,
+            deficiência, aparência física, raça, idade, origem ou religião. Não será tolerado,
+            sob nenhuma circunstância, o constrangimento de participantes em eventos e canais
+            organizados pela comunidade. Linguagem e/ou exposição de imagens sexuais ou de cunho
+            discriminatório não serão apropriadas no âmbito de nossa comunidade – isto inclui
+            os eventos, as palestras, apresentações, exemplos ou demonstrações, site, e-mails,
+            chat e quaisquer outro canal da comunidade. Os participantes que violarem estas
+            regras podem ser repreendidos ou expulsos do canal e/ou evento sem direito a reembolso,
+             a critério da organização. Entendemos como assédio e constrangimento:
+          </p>
+
+          <br>
+          <ul>
+              <li>
+                Comentários que reforçam estruturas sociais de dominação, sejam relacionados a
+                gênero, identidade e expressão de gênero, orientação sexual, deficiência, aparência f
+                ísica, raça, idade, origem ou religião;
+              </li>
+              <li>Imagens sexuais em espaços públicos;</li>
+              <li>Comentários de cunho sexual;</li>
+              <li>Intimidação intencional;</li>
+              <li>Perseguição;</li>
+              <li>Obtenção de som ou imagem constrangedores;</li>
+              <li>Interrupção continuada e intencional de palestras e/ou eventos paralelos;</li>
+              <li>Contato físico inapropriado; atenção sexual não solicitada;</li>
+          </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='help'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <ul class='list-unstyled'>
+            <li><h2><i class='glyphicon glyphicon-search'></i> PATROCINADORES</h2></li>
+            <li><p>Acompanhe os patrocinadores do evento.</p></li>
+            <li><hr></li>
+          </ul>
+
+          <% (1..12).each do %>
+          <% Partner.all.each do |partner| %>
+           <div class="col-md-2">
+              <div class='padding'>
+               <%= link_to partner.link
+                   image_tag(partner.logo, width: '120', height: '60',
+                     style: 'margin-bottom: 30px;') %>
+              </div>
+           </div>
+            <% end %>
+          <% end %>
+
+          <%= has_records?(Partner.all) %>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class='list-unstyled text-center'>
+           <li><h2><i class='glyphicon glyphicon-search'></i> CONTATO</h2></li>
+           <li><p>Envie nos uma mensage, responderemos o mais rápido possivel.</p></li>
+           <li><hr></li>
+        </ul>
+       <%= render partial: 'contact/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: 'layouts/footer' %>

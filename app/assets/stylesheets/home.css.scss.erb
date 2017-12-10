@@ -1,0 +1,78 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home{
+  position: relative;
+  font-size: 16px;
+  font-family: 'Ubuntu';
+
+  .breadcrumb
+  {
+    width: 100%;
+    position: absolute;
+    bottom: -170px;
+    a
+    {
+      position: relative;
+      text-transform: uppercase;
+    }
+  }
+
+  #home
+  {
+    position: relative;
+    height: 560px;
+    ul:nth-child(1)
+    {
+      position: relative;
+      margin-top: 120px;
+    }
+  }
+
+  #speakers
+  {
+    position: relative;
+    .avatar
+    {
+      position: relative;
+      width: 84px;
+      height: 84px;
+      margin-bottom: 50px;
+    }
+  }
+
+  #speakers, #contact
+  {
+    position: relative;
+    .input-group-addon
+    {
+      position: relative;
+      background-color: #FFF;
+      border-right: none !important;
+    }
+
+    form
+    {
+      input[type=text], input[type=email]
+      {
+        position: relative;
+        height: 40px !important;
+        border-left: none !important;
+      }
+      textarea
+      {
+        position: relative;
+        height: 140px;
+        resize: none !important;
+      }
+    }
+  }
+
+  footer
+  {
+    position: relative;
+    margin-bottom: 0px !important;
+    margin-top: 40px;
+  }
+}
